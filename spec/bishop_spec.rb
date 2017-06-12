@@ -1,68 +1,11 @@
 require_relative '.././lib/bishop'
+
 RSpec.describe Bishop do
   let(:bishop) { Bishop.new('d5') }
   
-   describe '.new' do
-     it 'creates new bishop piece' do
-      expect(bishop).to be_kind_of Bishop  
-    end
-    it 'returns bishop position' do
-      expect(bishop.position).to eq('d5')
-    end
-  end
-
-  describe '#position_validation' do
-    context 'passed good number of initialize parameters' do
-      it 'returns nil' do
-        expect(bishop.position_validation).to be_nil
-      end
-    end
-
-    context 'passed wrong number of initialize params' do
-      let(:wrong_bishop) { Bishop.new('Adam_Małysz') }
-      it 'throws ArgumentError' do
-        expect {raise ArgumentError, "ArgumentError: Pass x_axis value and y_values (example: 'd4')" }.
-        to raise_error("ArgumentError: Pass x_axis value and y_values (example: 'd4')")
-      end
-    end
-  end
-
-  describe '#start_position_on_board?' do
-    context 'passed params are on board' do
-      it 'returns nil' do
-        expect(bishop.start_position_on_board?).to be_nil
-      end
-    end
-
-    context 'passed params are out of board' do
-      it 'throws ArgumentError' do
-        expect {raise ArgumentError, "Passed values are not included on board - Pass something else" }.
-        to raise_error("Passed values are not included on board - Pass something else")
-      end
-    end
-  end
-
-  describe '#x_axis' do
-    it 'returns first param of position as number' do 
-      expect(bishop.x_axis).to eq(4)
-    end
-  end
-
-  describe '#y_axis' do
-    it 'returns last param of position' do 
-      expect(bishop.y_axis).to eq(5)
-    end
-  end
-
   describe '#vectors' do
     it 'returns array of vectors' do
       expect(bishop.vectors).to equal(Bishop::VECTORS)
-    end
-  end
-
-  describe '#on_board?' do
-    it 'returns true if is on board' do
-      expect(bishop.on_board?(bishop.x_axis, bishop.y_axis)).to be_truthy
     end
   end
 
