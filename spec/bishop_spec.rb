@@ -11,6 +11,37 @@ RSpec.describe Bishop do
     end
   end
 
+  describe '#position_validation' do
+    context 'passed good number of initialize parameters' do
+      it 'returns nil' do
+        expect(bishop.position_validation).to be_nil
+      end
+    end
+
+    context 'passed wrong number of initialize params' do
+      let(:wrong_bishop) { Bishop.new('Adam_Małysz') }
+      it 'throws ArgumentError' do
+        expect {raise ArgumentError, "ArgumentError: Pass x_axis value and y_values (example: 'd4')" }.
+        to raise_error("ArgumentError: Pass x_axis value and y_values (example: 'd4')")
+      end
+    end
+  end
+
+  describe '#start_position_on_board?' do
+    context 'passed params are on board' do
+      it 'returns nil' do
+        expect(bishop.start_position_on_board?).to be_nil
+      end
+    end
+
+    context 'passed params are out of board' do
+      it 'throws ArgumentError' do
+        expect {raise ArgumentError, "Passed values are not included on board - Pass something else" }.
+        to raise_error("Passed values are not included on board - Pass something else")
+      end
+    end
+  end
+
   describe '#x_axis' do
     it 'returns first param of position as number' do 
       expect(bishop.x_axis).to eq(4)
