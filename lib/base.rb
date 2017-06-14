@@ -16,7 +16,7 @@ class Base
   end
 
   def x_axis
-    @position[0].upcase.ord - 64
+    @position[0].ord - 96
   end
 
   def y_axis
@@ -36,7 +36,7 @@ class Base
   end
 
   def exec
-    moves_on_board.map { |x, y| [(x + 64).chr, y].join('') }
+    moves_on_board.map { |x, y| [(x + 96).chr, y].join('') }
   end
 
   def vectors
