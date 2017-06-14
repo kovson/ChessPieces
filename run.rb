@@ -7,4 +7,4 @@ require_relative 'lib/base'
 
 # use in this way - Bishop.new('b4').exec
 
-p Bishop.new('b4').exec
+p Bishop.new('d1').exec
